@@ -21,7 +21,7 @@ public class EntregaDTO {
 	private String bairro;
 	private String cidade;
 	private boolean entregue;
-	private UUID entregador;
+	private String entregador;
 	
 	public EntregaDTO(EntregaEntity entregaEntity) {
 		id = entregaEntity.getId();

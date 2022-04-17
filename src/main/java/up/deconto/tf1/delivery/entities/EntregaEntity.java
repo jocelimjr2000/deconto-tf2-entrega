@@ -47,5 +47,5 @@ public class EntregaEntity {
 	
 	private boolean entregue = false;
 	
-	private UUID entregador;
+	private String entregador;
 }
