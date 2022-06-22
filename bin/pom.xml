@@ -9,9 +9,9 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>getmedic</groupId>
-	<artifactId>up.deconto.tf2</artifactId>
+	<artifactId>up.deconto.tf1</artifactId>
 	<version>0.0.1</version>
-	<name>deconto-tf2-delivery-service</name>
+	<name>deconto-tf1-delivery-service</name>
 	<description>Trabalho Final Parte 1 - Serviço de Entregas</description>
 	<properties>
 		<java.version>11</java.version>
