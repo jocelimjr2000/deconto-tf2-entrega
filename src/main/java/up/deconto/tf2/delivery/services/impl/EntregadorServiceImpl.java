@@ -58,29 +58,28 @@ public class EntregadorServiceImpl implements EntregadorService {
 		EntregadorDTO entregadorDTO = null;
 		
 		JsonObject jsonObject = JsonParser.parseString(payload).getAsJsonObject();
+
+		if(jsonObject.get("response") == null) {
+			return null;
+		}			
+	
+		JsonObject responseObj = jsonObject.get("response").getAsJsonObject();
 		
-		boolean response = jsonObject.get("response").isJsonNull();
+		entregadorDTO = new EntregadorDTO();
 		
-		if(response == false) {
-			
-			JsonObject responseObj = jsonObject.get("response").getAsJsonObject();
-			
-			entregadorDTO = new EntregadorDTO();
-			
-			String getId = null;
-			String getName = null;
-			
-			try {
-				getId = responseObj.get("id").getAsString();
-			}catch (Exception e) {}
-			
-			try {
-				getName = responseObj.get("nome").getAsString();
-			}catch (Exception e) {}
-			
-			entregadorDTO.setId(getId);
-			entregadorDTO.setNome(getName);
-		}
+		String getId = null;
+		String getName = null;
+		
+		try {
+			getId = responseObj.get("id").getAsString();
+		}catch (Exception e) {}
+		
+		try {
+			getName = responseObj.get("nome").getAsString();
+		}catch (Exception e) {}
+		
+		entregadorDTO.setId(getId);
+		entregadorDTO.setNome(getName);
 
 		return entregadorDTO;
 	}

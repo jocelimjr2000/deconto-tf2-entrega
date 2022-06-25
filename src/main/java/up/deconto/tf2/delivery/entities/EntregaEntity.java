@@ -5,9 +5,11 @@ import java.util.UUID;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+
+import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.annotations.Type;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -19,10 +21,12 @@ import lombok.Setter;
 @NoArgsConstructor
 @Table(name = "Entrega")
 public class EntregaEntity {
-	
+
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name="id", insertable = false, updatable = false, nullable = false)
+	@GeneratedValue(generator = "uuid2")
+    @GenericGenerator(name = "uuid2", strategy = "uuid2")
+	@Column(name="id", insertable = false, updatable = false, nullable = false, columnDefinition = "VARCHAR(36)")
+	@Type(type = "uuid-char")
 	private UUID id;
 	
 	@Column(nullable = false)

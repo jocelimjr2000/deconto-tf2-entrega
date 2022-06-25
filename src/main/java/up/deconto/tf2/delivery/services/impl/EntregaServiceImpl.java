@@ -105,8 +105,9 @@ public class EntregaServiceImpl implements EntregaService {
 
 	@Override
 	public EntregaDTO updateBoy(IncluirEntregadorDTO incluirEntregadorDTO) {
-		Optional<EntregaEntity> entregaEntityOp = entregaRepository.findById(incluirEntregadorDTO.getId());
 		
+		Optional<EntregaEntity> entregaEntityOp = entregaRepository.findById(incluirEntregadorDTO.getId());
+
 		if(entregaEntityOp.isEmpty() == false) {
 			EntregaEntity entregaEntity = entregaEntityOp.get();
 			
