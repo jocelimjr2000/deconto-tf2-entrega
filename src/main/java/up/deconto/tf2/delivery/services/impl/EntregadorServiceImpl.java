@@ -6,6 +6,8 @@ import org.springframework.amqp.core.MessageProperties;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 
@@ -43,12 +45,22 @@ public class EntregadorServiceImpl implements EntregadorService {
 		
 		Object receive = amqpTemplate.convertSendAndReceive(RabbitMQConstants.QUEUE, sendoToQueueDTO, messagePostProcessor);
 		
+		String payload = null;
 		
-		JsonObject jsonObject = JsonParser.parseString(receive.toString()).getAsJsonObject();
-		boolean response = jsonObject.get("response").isJsonNull();
+		try {
+			payload = new ObjectMapper().writeValueAsString(receive);
+		} catch (JsonProcessingException e) {}
+		
+		if(payload == null) {
+			return null;
+		}
 		
 		EntregadorDTO entregadorDTO = null;
-
+		
+		JsonObject jsonObject = JsonParser.parseString(payload).getAsJsonObject();
+		
+		boolean response = jsonObject.get("response").isJsonNull();
+		
 		if(response == false) {
 			
 			JsonObject responseObj = jsonObject.get("response").getAsJsonObject();
