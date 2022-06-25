@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import io.swagger.annotations.ApiOperation;
 import up.deconto.tf2.delivery.services.EntregadorService;
 
 @RestController
@@ -14,9 +15,9 @@ public class EntregadorResource {
 	@Autowired
 	EntregadorService entregadorService;
 	
+	@ApiOperation("Pesquisar entregador por id")
 	@GetMapping
-	public void test() {
-		
-		entregadorService.test();
+	public void find() {
+		entregadorService.findById("626ea7ec509681fb83e86702");
 	}
 }
