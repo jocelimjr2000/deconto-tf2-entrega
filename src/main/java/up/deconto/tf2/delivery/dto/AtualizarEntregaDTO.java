@@ -40,6 +40,10 @@ public class AtualizarEntregaDTO {
 	@ApiModelProperty(value = "123", example = "123")
 	@NotNull(message = "Preenchimento obrigatório")
 	private String numero;
+		
+	@ApiModelProperty(value = "10,23", example = "10,23")
+	@NotNull(message = "Valor")
+	private float valor;
 	
 	public UUID getId() {
 		return UUID.fromString(id);

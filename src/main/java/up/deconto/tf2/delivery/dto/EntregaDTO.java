@@ -20,6 +20,7 @@ public class EntregaDTO {
 	private String numero;
 	private String bairro;
 	private String cidade;
+	private float valor;
 	private boolean entregue;
 	private String entregador;
 	
@@ -32,6 +33,7 @@ public class EntregaDTO {
 		numero = entregaEntity.getNumero();
 		bairro = entregaEntity.getBairro();
 		cidade = entregaEntity.getCidade();
+		valor = entregaEntity.getValor();
 		entregue = entregaEntity.isEntregue();
 		entregador = entregaEntity.getEntregador();
 	}

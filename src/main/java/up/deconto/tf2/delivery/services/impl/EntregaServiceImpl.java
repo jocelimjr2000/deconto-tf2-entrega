@@ -1,4 +1,4 @@
-package up.deconto.tf2.delivery.services;
+package up.deconto.tf2.delivery.services.impl;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,6 +15,8 @@ import up.deconto.tf2.delivery.dto.EntregaDTO;
 import up.deconto.tf2.delivery.dto.IncluirEntregadorDTO;
 import up.deconto.tf2.delivery.entities.EntregaEntity;
 import up.deconto.tf2.delivery.repositories.EntregaRepository;
+import up.deconto.tf2.delivery.services.EnderecoService;
+import up.deconto.tf2.delivery.services.EntregaService;
 
 @Service("entregaService")
 public class EntregaServiceImpl implements EntregaService {
@@ -38,6 +40,7 @@ public class EntregaServiceImpl implements EntregaService {
 		entregaEntity.setNumero(cadastrarEntregaDTO.getNumero());
 		entregaEntity.setBairro(enderecoDTO.getBairro());
 		entregaEntity.setCidade(enderecoDTO.getLocalidade());
+		entregaEntity.setValor(cadastrarEntregaDTO.getValor());
 		
 		entregaEntity = entregaRepository.save(entregaEntity);
 		
@@ -90,6 +93,7 @@ public class EntregaServiceImpl implements EntregaService {
 			entregaEntity.setDestinatario(atualizarEntregaDTO.getDestinatario());
 			entregaEntity.setCpf(atualizarEntregaDTO.getCpf());
 			entregaEntity.setNumero(atualizarEntregaDTO.getNumero());
+			entregaEntity.setValor(atualizarEntregaDTO.getValor());
 			
 			entregaEntity = entregaRepository.save(entregaEntity);
 			

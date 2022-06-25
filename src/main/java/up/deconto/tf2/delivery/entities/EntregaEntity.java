@@ -45,6 +45,9 @@ public class EntregaEntity {
 	@Column(nullable = false)
 	private String cidade;
 	
+	@Column(nullable = false)
+	private float valor;
+	
 	private boolean entregue = false;
 	
 	private String entregador;
