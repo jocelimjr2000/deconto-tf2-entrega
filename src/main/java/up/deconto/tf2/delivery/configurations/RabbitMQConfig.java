@@ -41,5 +41,5 @@ public class RabbitMQConfig {
         container.setMessageListener(jsonRabbitTemplate(connectionFactory, mapper));
         return container;
     }
-	 
+	
 }
